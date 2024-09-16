@@ -19,7 +19,6 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: static-files-server
     spec:
@@ -56,9 +55,9 @@ spec:
         persistentVolumeClaim:
           claimName: 7816e67a-a3fc-4534-854c-fb259a6dc2d0
       - configMap:
-          defaultMode: 420
           name: nginx-config
         name: nginx-config
+
 ---
 apiVersion: v1
 kind: Service
@@ -76,6 +75,7 @@ spec:
   selector:
     app: static-files-server
   type: ClusterIP
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -103,6 +103,7 @@ spec:
   - hosts:
     - ns9648k.web.sigma2.no
     secretName: web-ns9648k-production-tls
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
