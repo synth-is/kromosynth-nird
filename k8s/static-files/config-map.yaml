@@ -36,6 +36,10 @@ data:
             if ($request_filename ~* \.wav$) {
                 add_header Content-Disposition inline;
                 add_header Content-Type audio/wav;
+                add_header 'Access-Control-Allow-Origin' 'https://phylogeny.synth.is';
+                add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+                add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
+                add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
             }
         }
 
